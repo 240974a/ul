@@ -39,17 +39,14 @@
 					WiFiClient serverClient = server.available();
 					serverClient.stop();
 				}
-				/*
 				//check clients for data
 				for (i = 0; i < MAX_SRV_CLIENTS; i++){
 					if (serverClients[i] && serverClients[i].connected()){
-						if (serverClients[i].available()){
-							//get data from the telnet client and push it to the UART
-							while (serverClients[i].available()) ul::telnet().write(serverClients[i].read());
-						}
+						//get data from the telnet client and push it to the UART
+						while (serverClients[i].available()) 
+							serverClients[i].read();
 					}
 				}
-				*/
 				//check UART for data
 				if (!arena.empty()){
 					//push UART data to all connected telnet clients
