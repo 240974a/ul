@@ -179,15 +179,16 @@
 
 		const sstream& operator << (const sstream& s_, const OWAddress& val){
 			sstream& s = const_cast<sstream&>(s_);
-			for (uint8_t i = 0; i < sizeof(OWAddress) / sizeof(OWAddress*); ++i) {
-				auto v = val[i];
-				if (i != 0){
+			for (uint8_t i = 0; i < sizeof(OWAddress) / sizeof(val[0]); ++i) {
+				if (i > 0)
 					*s.pos++ = ',';
-				}
 				*s.pos++ = '0';
 				*s.pos++ = 'x';
-				*s.pos++ = '0' + v % 16; v /= 16;
-				*s.pos++ = '0' + v % 16;
+				auto v = val[i];
+				char d2 = '0' + (v % 16); if(d2 > '9') d2+=7; v /= 16;
+				char d1 = '0' + (v % 16); if(d1 > '9') d1+=7; 
+				*s.pos++ = d1;
+				*s.pos++ = d2;
 			}
 			return s;
 		}
