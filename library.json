@@ -12,12 +12,12 @@
     "type": "git",
     "url": "https://github.com/240974a/ul.git"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "frameworks": "arduino",
   "platforms":
   [
     "atmelavr",
     "espressif32",
-	 "espressif8266"
+    "espressif8266"
   ]
 }
